@@ -1,0 +1,27 @@
+name: ci-cl
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  notify:
+    name: notify
+    runs-on: ubuntu-latest
+    if: ${{ always() }} 
+
+    steps:
+      - name: notify
+        uses: nobrayner/discord-webhook@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discord-webhook: https://discord.com/api/webhooks/957013972995952660/VKPZozGE1GDtWrIf4Q5J9xfx4PptT0uyzkOueaITHhpvKb1EKSked2ePmMS3ldRAIRI_
+          username: 'xotomicro'
+          title: '${{ github.workflow }}: {{STATUS}}'
+          description: '${{ github.event_name }} trigged this {{STATUS}}!'
+          include-details: 'true'
+          color-success: '#4287f5'
+          color-failure: 'eb4034'
+          color-cancelled: '0x42daf5'
+          

@@ -4,7 +4,7 @@ services:
     ## ELASTICSEARCH ##
     ###################
 
-    elasticsearch:
+    elasticsearch-master-hl:
         container_name: elasticsearch
         image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
         environment:
